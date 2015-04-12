@@ -44,17 +44,21 @@ app.use('/' + argv._[0], express.static(folder));
 app.use('/' + epoch + 'js', express.static(__dirname + '/js'));
 
 app.get('/', function(req, res) {
-  var n = parseInt(req.query.page) - 1 || 0;
-  var paginated = split(files, totalPages)[n];
-  res.render('index', {
-    pages: rng(totalPages),
-    totalPages: totalPages,
-    cp: parseInt(req.query.page),
-    total: files.length,
-    files: paginated,
-    base: __dirname,
-    epoch: epoch
-  });
+  if (!req.query.page) {
+    res.redirect('/?page=1')
+  } else {
+    var n = parseInt(req.query.page) - 1;
+    var paginated = split(files, totalPages)[n];
+    res.render('index', {
+      pages: rng(totalPages),
+      totalPages: totalPages,
+      cp: parseInt(req.query.page),
+      total: files.length,
+      files: paginated,
+      base: __dirname,
+      epoch: epoch
+    });
+  }
 });
 
 console.log("bildo is running at port :" + port + " with a total of " + files.length + " images.");
