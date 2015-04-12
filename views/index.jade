@@ -1,0 +1,36 @@
+doctype html
+html
+ head
+  title bildo
+  meta(charset='UTF-8')
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  style.
+   a { 
+    text-decoration: none; color: #AA2C2C;} 
+   a.pag:hover, a.pag:focus {
+    background-color: #AA2C2C; color: white; padding: 1px; }
+   body {
+    color: #444; font-size: 18px;  line-height: 1.4;}
+   img {
+    border: 2px solid #909090;}
+  script(type='text/javascript', src= epoch + 'js/gridify-min.js')
+  script(type='text/javascript', src= epoch + 'js/img.js')
+body
+ if total >= 1
+  if pages.length > 1
+   .pagination
+    if cp !== pages[0]
+     a(class='pag', href= '/?page=' + (cp - 1)) Prev
+     span  · 
+    span Page <b>#{cp} of #{totalPages}</b> with a total of #{total} images 
+    if cp !== pages[pages.length - 1]
+     span  · 
+     a(class='pag', href= '/?page=' + (cp + 1)) Next
+  .grid
+   each file in files
+    - var file = file.replace(base, '')
+     a(target='_blank', href= file)
+      img(src= file)
+ else
+  h1 Didn't found any image. Are you  sure that there's any?
+

@@ -1,0 +1,23 @@
+{
+  "name": "bildo",
+  "version": "1.0.8",
+  "description": "Quick image gallery",
+  "main": "index.js",
+  "bin": {
+    "bildo": "./bildo.js"
+  },
+  "keywords": [
+    "image",
+    "gallery",
+    "esperanto",
+    "images"
+  ],
+  "author": "underr",
+  "license": "GPL3",
+  "dependencies": {
+    "express": "^4.12.3",
+    "glob": "^5.0.5",
+    "jade": "^1.9.2",
+    "yargs": "^3.7.1"
+  }
+}
