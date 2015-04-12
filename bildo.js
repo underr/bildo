@@ -5,7 +5,10 @@ var app = express();
 var glob = require('glob');
 var argv = require('yargs')
   .usage("Usage: $0 folder <options>")
+  .command("-port, -p", "Which port to use (default: 5000)")
+  .command("--items, -i", "ow many items you want per page (default: 20)")
   .alias('p', 'port')
+  .alias('i', 'items')
   .help('h')
   .alias('h', 'help')
   .argv;
@@ -32,8 +35,8 @@ var folder = './' + argv._[0];
 var files = glob.sync(folder + '/**/*(*.jpg|*.jpeg|*.png|*.gif)'); // will catch subdirectories
 var port = argv.port || 5000;
 var epoch = new Date().getTime();
-var itemsPerPage = 10 || argv.items;
-var totalPages =  Math.ceil(files.length / itemsPerPage) || argv.pages;
+var itemsPerPage = argv.items || 20;
+var totalPages = Math.ceil(files.length / itemsPerPage);
 
 // Middleware
 app.enable('trust proxy');
