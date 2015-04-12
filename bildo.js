@@ -34,7 +34,6 @@ function rng(i){return i?rng(i-1).concat(i):[]} // number range function
 var folder = './' + argv._[0];
 var files = glob.sync(folder + '/**/*(*.jpg|*.jpeg|*.png|*.gif)'); // will catch subdirectories
 var port = argv.port || 5000;
-var epoch = new Date().getTime();
 var itemsPerPage = argv.items || 20;
 var totalPages = Math.ceil(files.length / itemsPerPage);
 
@@ -44,7 +43,7 @@ app.locals.pretty = true;
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use('/' + argv._[0], express.static(folder));
-app.use('/' + epoch + 'js', express.static(__dirname + '/js'));
+app.use('/js', express.static(__dirname + '/js'));
 
 app.get('/', function(req, res) {
   if (!req.query.page) {
@@ -58,8 +57,7 @@ app.get('/', function(req, res) {
       cp: parseInt(req.query.page),
       total: files.length,
       files: paginated,
-      base: __dirname,
-      epoch: epoch
+      base: __dirname
     });
   }
 });
