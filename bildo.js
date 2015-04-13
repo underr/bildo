@@ -35,6 +35,13 @@ var files = glob.sync(folder + '/**/*(*.jpg|*.jpeg|*.png|*.gif)'); // will catch
 var port = argv.port || 5000;
 var itemsPerPage = argv.items || 20;
 var totalPages = Math.ceil(files.length / itemsPerPage);
+var pagesNumber = rng(totalPages);
+var pages = new Object();
+
+// Create pages before serving them
+for(var i=0; i < pagesNumber.length; i++){
+  pages[i] = split(files, totalPages)[i];
+}
 
 // Middleware
 app.enable('trust proxy');
@@ -49,13 +56,12 @@ app.get('/', function(req, res) {
     res.redirect('/?page=1')
   } else {
     var n = parseInt(req.query.page) - 1;
-    var paginated = split(files, totalPages)[n];
     res.render('index', {
       pages: rng(totalPages),
       totalPages: totalPages,
       cp: parseInt(req.query.page),
       total: files.length,
-      files: paginated,
+      files: pages[n],
       base: __dirname
     });
   }
