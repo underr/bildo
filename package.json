@@ -3,6 +3,10 @@
   "version": "1.0.17",
   "description": "Quick image gallery",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/underr/bildo"
+  },
   "bin": {
     "bildo": "./bildo.js"
   },
