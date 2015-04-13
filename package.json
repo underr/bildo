@@ -1,6 +1,6 @@
 {
   "name": "bildo",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Quick image gallery",
   "main": "index.js",
   "bin": {
