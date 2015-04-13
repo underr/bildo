@@ -41,7 +41,6 @@ var pages = new Object();
 // Create pages before serving them
 for(var i=0; i < pagesNumber.length; i++) {
   pages[i] = split(files, totalPages)[i];
-  console.log(pages[i]);
 }
 
 // Middleware
@@ -66,6 +65,11 @@ app.get('/', function(req, res) {
       base: __dirname
     });
   }
+});
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Error');
 });
 
 console.log("bildo is running at port :" + port + " with a total of " + files.length + " images.");
