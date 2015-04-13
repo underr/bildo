@@ -5,8 +5,8 @@ html
   meta(charset='UTF-8')
   meta(name="viewport", content="width=device-width, initial-scale=1.0")
   style.
-   a { 
-    text-decoration: none; color: #AA2C2C;} 
+   a {
+    text-decoration: none; color: #AA2C2C;}
    a.pag:hover, a.pag:focus {
     background-color: #AA2C2C; color: white; padding: 1px; }
    body {
@@ -21,10 +21,10 @@ body
    .pagination
     if cp !== pages[0]
      a(class='pag', href= '/?page=' + (cp - 1)) Prev
-     span  · 
-    span Page <b>#{cp} of #{totalPages}</b> with a total of #{total} images 
+     span  ·
+    span Page <b>#{cp} of #{totalPages}</b> with a total of #{total} images
     if cp !== pages[pages.length - 1]
-     span  · 
+     span  ·
      a(class='pag', href= '/?page=' + (cp + 1)) Next
   .grid
    each file in files
@@ -33,4 +33,3 @@ body
       img(src= file)
  else
   h1 Didn't found any image. Are you  sure that there's any?
-
