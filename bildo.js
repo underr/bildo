@@ -37,7 +37,6 @@ var itemsPerPage = argv.items || 20;
 var totalPages = Math.ceil(files.length / itemsPerPage);
 var pagesNumber = rng(totalPages);
 var pages = new Object();
-console.log(pagesNumber);
 
 // Create pages before serving them
 for(var i=0; i < pagesNumber.length; i++) {
@@ -50,7 +49,7 @@ app.enable('trust proxy');
 app.locals.pretty = true;
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
-app.use('/' + argv._[0], express.static(folder));
+app.use('/' + argv._[0].replace(/\ /g,"_"), express.static(folder));
 app.use('/js', express.static(__dirname + '/js'));
 
 app.get('/', function(req, res) {

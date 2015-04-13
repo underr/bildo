@@ -28,7 +28,7 @@ body
      a(class='pag', href= '/?page=' + (cp + 1)) Next
   .grid
    each file in files
-    - var file = file.replace(base, '')
+    - var file = file.replace(base, '').replace(/\ /g,"_")
      a(target='_blank', href= file)
       img(src= file)
  else
