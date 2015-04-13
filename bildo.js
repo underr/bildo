@@ -41,6 +41,7 @@ var pages = new Object();
 // Create pages before serving them
 for(var i=0; i < pagesNumber.length; i++) {
   pages[i] = split(files, totalPages)[i];
+  console.log(pages[i]);
 }
 
 // Middleware
