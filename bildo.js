@@ -37,10 +37,12 @@ var itemsPerPage = argv.items || 20;
 var totalPages = Math.ceil(files.length / itemsPerPage);
 var pagesNumber = rng(totalPages);
 var pages = new Object();
+console.log(pagesNumber);
 
 // Create pages before serving them
-for(var i=0; i < pagesNumber.length; i++){
+for(var i=0; i < pagesNumber.length; i++) {
   pages[i] = split(files, totalPages)[i];
+  console.log(pages[i]);
 }
 
 // Middleware
