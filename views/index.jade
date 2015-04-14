@@ -21,10 +21,10 @@ body
    .pagination
     if cp !== pages[0]
      a(class='pag', href= '/?page=' + (cp - 1)) Prev
-     span  ·
+     span  · 
     span Page <b>#{cp} of #{totalPages}</b> with a total of #{total} images
     if cp !== pages[pages.length - 1]
-     span  ·
+     span  · 
      a(class='pag', href= '/?page=' + (cp + 1)) Next
   .grid
    - var nfolder = folder.replace(/\ /g,"_");
