@@ -27,8 +27,9 @@ body
      span  ·
      a(class='pag', href= '/?page=' + (cp + 1)) Next
   .grid
+   - var nfolder = folder.replace(/\ /g,"_");
    each file in files
-    - var file = file.replace(base, '').replace(folder, folder.replace(/\ /g,"_"))
+    - var file = file.replace(base, '').replace(folder, nfolder)
      a(target='_blank', href= file)
       img(src= file)
  else
