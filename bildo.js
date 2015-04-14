@@ -58,6 +58,7 @@ app.get('/', function(req, res) {
     var n = parseInt(req.query.page) - 1;
     res.render('index', {
       pages: rng(totalPages),
+      folder: argv._[0],
       totalPages: totalPages,
       cp: parseInt(req.query.page),
       total: files.length,
