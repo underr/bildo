@@ -16,4 +16,5 @@ Run `bildo pepper` and access [localhost:5000](http://localhost:5000). You'll ge
 #### Options:
 
 `bildo -i [number]` - number of images per page to display (default is 20)
+
 `bildo -p [port]` - port to use (default is 5000)
