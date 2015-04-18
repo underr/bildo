@@ -68,9 +68,17 @@ app.get('/', function(req, res) {
   }
 });
 
+// 404 and error handling
 app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Error');
+  if (req.query) {
+	res.redirect('?page=1');
+  } else {
+    res.status(500).send("Error.");
+  }
+});
+
+app.use(function(req, res, next) {
+  res.status(404).send("The page you requested doesn't exist!");
 });
 
 console.log("bildo is running at port :" + port + " with a total of " + files.length + " images.");
