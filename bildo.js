@@ -5,8 +5,10 @@ var glob = require('glob');
 var argv = require('yargs')
   .usage("Usage: $0 folder <options>")
   .command("-port, -p", "Which port to use (default: 5000)")
-  .command("--items, -i", "ow many items you want per page (default: 20)")
+  .command("--nogrid -ng", "Don't display images on a grid")
+  .command("--items, -i", "How many items you want per page (default: 20)")
   .alias('p', 'port')
+  .alias('ng', 'nogrid')
   .alias('i', 'items')
   .help('h')
   .alias('h', 'help')
@@ -59,6 +61,7 @@ app.get('/', function(req, res) {
     res.render('index', {
       pages: rng(totalPages),
       folder: argv._[0],
+      nogrid: argv.nogrid,
       totalPages: totalPages,
       cp: parseInt(req.query.page),
       total: files.length,
